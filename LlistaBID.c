@@ -115,6 +115,42 @@ int LLISTABID_consulta(LlistaBID l){
     return enter;
 }
 
+int LLISTABID_buida(LlistaBID l){
+    return l.pri == l.ult;
+}
+
+void LLISTABID_vesInici(LlistaBID * l){
+    l->pdi = l->pri->seg;
+}
+
+void LLISTABID_vesFi(LlistaBID * l){
+    l->pdi = l->ult->ant;
+}
+
+void LLISTABID_avanca(LlistaBID * l){
+    if (l->pdi == l->ult){
+        printf("ERROR\n");
+    }else{
+        l->pdi = l->pdi->seg;
+    }
+}
+
+void LLISTABID_retrocedeix(LlistaBID * l){
+    if (l->pdi == l->pri){
+        printf("ERROR\n");
+    }else{
+        l->pdi = l->pdi->ant;
+    }
+}
+
+int LLISTABID_inici(LlistaBID l){
+    return l.pdi == l.pri;
+}
+
+int LLISTABID_fi(LlistaBID l){
+    return l.pdi == l.ult;
+}
+
 void LLISTABID_destrueix(LlistaBID * l){
     Node * aux;
     while(l->pri != NULL){
