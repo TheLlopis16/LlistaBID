@@ -1,6 +1,9 @@
 #include <stdio.h>
+#include "llistaBID.h"
 
 int main() {
-    printf("Hello, World!\n");
+    LlistaBID l = LLISTABID_crea();
+
+    LLISTABID_destrueix(&l);
     return 0;
 }
