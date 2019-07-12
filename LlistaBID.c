@@ -91,6 +91,30 @@ void LLISTABID_insereixOrdenat(LlistaBID * l, int num){
     }
 }
 
+void LLISTABID_esborra(LlistaBID * l){
+    Node * aux;
+    if (l->pdi == l->pri || l->pdi == l->ult){
+        printf("ERROR\n");
+    }else{
+        aux = l->pdi;
+        l->pdi->ant->seg = l->pdi->seg;
+        l->pdi->seg->ant = l->pdi->ant;
+        l->pdi = l->pdi->ant;
+        free(aux);
+    }
+}
+
+int LLISTABID_consulta(LlistaBID l){
+    int enter;
+    if(l.pdi == l.pri || l.pdi == l.ult){
+        printf("ERROR\n");
+        enter = 0;
+    }else{
+        enter = l.pdi->enter;
+    }
+    return enter;
+}
+
 void LLISTABID_destrueix(LlistaBID * l){
     Node * aux;
     while(l->pri != NULL){
