@@ -25,6 +25,72 @@ llistaBID LLISTABID_crea(){
     return l;
 }
 
+void LLISTABID_insereixdavant (llistaBID *l, int num){
+    if(l->pdi == l->cap){
+        printf("ERROR\n");
+    }else{
+        aux = (Node*)malloc(sizeof(Node));
+        if(aux == NULL){
+            printf("ERROR\n");
+        }else{
+            aux->enter=num;
+            aux->seg = l->pdi;
+            aux->ant = l->pdi->ant;
+            l->pdi->ant = aux;
+            aux->ant->seg = aux;
+        }
+    }
+}
+
+void LLISTABID_insereixdarrera (llistaBID *l, int num){
+    Node*aux;
+    if(l->pdi == l->ult){
+        printf("ERROR\n");
+    }else{
+        aux=(Node*)malloc(sizeof(Node));
+        if(aux==NULL){
+            printf("Error");
+        }else{
+            aux->enter=num;
+            aux->seg = l->pdi->seg;
+            aux->ant = l->pdi;
+            l->pdi->seg->ant = aux;
+            l->pdi->seg = aux;
+        }
+    }
+}
+
+void LLISTABID_insereixOrdenat(LlistaBID * l, int num){
+    Node * aux;
+    aux = (Node *) malloc (sizeof(Node));
+    if (aux != NULL){
+        aux->enter = num;
+        l->pdi = l->pri->seg;
+        if(l->pri->seg == l->ult){
+            aux->ant = l->pri;
+            aux->seg = l->ult;
+            l->pri->seg = aux;
+            l->ult->ant = aux;
+            l->pdi = l->pri->seg;
+        }else{
+            int sortir = 0;
+            while (sortir == 0){
+                if(l->pdi->enter > num && l->pdi->seg != l->ult){
+                    l->pdi = l->pdi->seg;
+                }else{
+                    sortir = 1;
+                }
+            }
+            aux->ant = l->pdi->ant;
+            aux->seg = l->pdi;
+            l->pdi->ant = aux;
+            aux->ant->seg = aux;
+        }
+    }else{
+        printf ("ERROR\n");
+    }
+}
+
 void LLISTABID_destrueix(LlistaBID * l){
     Node * aux;
     while(l->pri != NULL){
