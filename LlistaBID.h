@@ -16,7 +16,7 @@ typedef struct n{
 }Node;
 
 typedef struct{
-    Node *cap;
+    Node *pri;
     Node *ult;
     Node *pdi;
 }llistaBID;
@@ -31,9 +31,9 @@ void LLISTABID_avanca (llistaBID *l);
 void LLISTABID_retrocedeix (llistaBID *l);
 int LLISTABID_fi (llistaBID l);
 int LLISTABID_inici (llistaBID l);
-void LLISTABID_vesinici (llistaBID *l);
-void LLISTABID_vesfinal (llistaBID *l);
+void LLISTABID_vesInici (llistaBID *l);
+void LLISTABID_vesFinal (llistaBID *l);
 int LLISTABID_buida (llistaBID l);
-void LLISTABID_destrueix
+void LLISTABID_destrueix (llistaBID *l);
 
 #endif //LLISTABID_LLISTABID_H

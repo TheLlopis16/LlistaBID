@@ -6,19 +6,19 @@
 
 llistaBID LLISTABID_crea(){
     llistaBID l;
-    l.cap = (Node*) malloc (sizeof(Node));
-    if(l.cap == NULL){
+    l.pri = (Node*) malloc (sizeof(Node));
+    if(l.pri == NULL){
         printf("ERROR\n");
     }else{
         l.ult = (Node*) malloc (sizeof(Node));
         if(l.ult == NULL){
             printf("ERROR\n");
-            free(l.cap);
+            free(l.pri);
         }else{
-            l.pdi = l.ult
+            l.pdi = l.ult;
             l.pri->seg = l.ult;
-            l.ult->ant = l.cap;
-            l.cap->ant = NULL;
+            l.ult->ant = l.pri;
+            l.pri->ant = NULL;
             l.ult->seg = NULL;
         }
     }
@@ -26,7 +26,8 @@ llistaBID LLISTABID_crea(){
 }
 
 void LLISTABID_insereixdavant (llistaBID *l, int num){
-    if(l->pdi == l->cap){
+    Node * aux;
+    if(l->pdi == l->pri){
         printf("ERROR\n");
     }else{
         aux = (Node*)malloc(sizeof(Node));
@@ -60,7 +61,7 @@ void LLISTABID_insereixdarrera (llistaBID *l, int num){
     }
 }
 
-void LLISTABID_insereixOrdenat(LlistaBID * l, int num){
+void LLISTABID_insereixOrdenat(llistaBID * l, int num){
     Node * aux;
     aux = (Node *) malloc (sizeof(Node));
     if (aux != NULL){
@@ -91,7 +92,7 @@ void LLISTABID_insereixOrdenat(LlistaBID * l, int num){
     }
 }
 
-void LLISTABID_esborra(LlistaBID * l){
+void LLISTABID_esborra(llistaBID * l){
     Node * aux;
     if (l->pdi == l->pri || l->pdi == l->ult){
         printf("ERROR\n");
@@ -104,7 +105,7 @@ void LLISTABID_esborra(LlistaBID * l){
     }
 }
 
-int LLISTABID_consulta(LlistaBID l){
+int LLISTABID_consulta(llistaBID l){
     int enter;
     if(l.pdi == l.pri || l.pdi == l.ult){
         printf("ERROR\n");
@@ -115,19 +116,19 @@ int LLISTABID_consulta(LlistaBID l){
     return enter;
 }
 
-int LLISTABID_buida(LlistaBID l){
+int LLISTABID_buida(llistaBID l){
     return l.pri == l.ult;
 }
 
-void LLISTABID_vesInici(LlistaBID * l){
+void LLISTABID_vesInici(llistaBID * l){
     l->pdi = l->pri->seg;
 }
 
-void LLISTABID_vesFi(LlistaBID * l){
+void LLISTABID_vesFinal(llistaBID * l){
     l->pdi = l->ult->ant;
 }
 
-void LLISTABID_avanca(LlistaBID * l){
+void LLISTABID_avanca(llistaBID * l){
     if (l->pdi == l->ult){
         printf("ERROR\n");
     }else{
@@ -135,7 +136,7 @@ void LLISTABID_avanca(LlistaBID * l){
     }
 }
 
-void LLISTABID_retrocedeix(LlistaBID * l){
+void LLISTABID_retrocedeix(llistaBID * l){
     if (l->pdi == l->pri){
         printf("ERROR\n");
     }else{
@@ -143,15 +144,15 @@ void LLISTABID_retrocedeix(LlistaBID * l){
     }
 }
 
-int LLISTABID_inici(LlistaBID l){
+int LLISTABID_inici(llistaBID l){
     return l.pdi == l.pri;
 }
 
-int LLISTABID_fi(LlistaBID l){
+int LLISTABID_fi(llistaBID l){
     return l.pdi == l.ult;
 }
 
-void LLISTABID_destrueix(LlistaBID * l){
+void LLISTABID_destrueix(llistaBID * l){
     Node * aux;
     while(l->pri != NULL){
         aux = l->pri;
