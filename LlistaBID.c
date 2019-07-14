@@ -63,37 +63,23 @@ void LLISTABID_insereixdarrera (llistaBID *l, int num){
 }
 
 void LLISTABID_insereixOrdenat(llistaBID * l, int num){
-    Node * aux;
-    aux = (Node *) malloc (sizeof(Node));
-    if (aux != NULL){
-        aux->enter = num;
-        l->pdi = l->pri->seg;
-        if(l->pri->seg == l->ult){
-            aux->ant = l->pri;
-            aux->seg = l->ult;
-            l->pri->seg = aux;
-            l->ult->ant = aux;
-            l->pdi = l->pri->seg;
+    int trobat = 0;
+
+    l->pdi = l->pri->seg;
+
+    while (l->pdi->seg != NULL && !trobat){
+        if(l->pdi->seg->enter <= num){
+            l->pdi = l->pdi->seg;
         }else{
-            int sortir = 0;
-            while (sortir == 0){
-                if(l->pdi->enter > num && l->pdi->seg != l->ult){
-                    l->pdi = l->pdi->seg;
-                }else{
-                    sortir = 1;
-                }
-            }
-            aux->ant = l->pdi->ant;
-            aux->seg = l->pdi;
-            l->pdi->ant = aux;
-            aux->ant->seg = aux;
+            trobat = 1;
         }
-    }else{
-        printf ("ERROR\n");
     }
+
+    LLISTABID_insereixdavant(l,num);
+
 }
 
-void LLISTABID_esborra(llistaBID * l){
+    void LLISTABID_esborra(llistaBID * l){
     Node * aux;
     if (l->pdi == l->pri || l->pdi == l->ult){
         printf("ERROR\n");
