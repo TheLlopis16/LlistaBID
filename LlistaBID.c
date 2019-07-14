@@ -2,6 +2,7 @@
 // Created by Marcel on 12/7/2019.
 //
 
+#include <stdlib.h>
 #include "LlistaBID.h"
 
 llistaBID LLISTABID_crea(){
@@ -130,7 +131,7 @@ void LLISTABID_vesFinal(llistaBID * l){
 
 void LLISTABID_avanca(llistaBID * l){
     if (l->pdi == l->ult){
-        printf("ERROR\n");
+        printf("ERROR, has arribat a la última casella\n");
     }else{
         l->pdi = l->pdi->seg;
     }
@@ -138,7 +139,7 @@ void LLISTABID_avanca(llistaBID * l){
 
 void LLISTABID_retrocedeix(llistaBID * l){
     if (l->pdi == l->pri){
-        printf("ERROR\n");
+        printf("ERROR, has arribat a la primera casella\n");
     }else{
         l->pdi = l->pdi->ant;
     }

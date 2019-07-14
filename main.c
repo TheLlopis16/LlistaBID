@@ -14,7 +14,7 @@ int main() {
         printf("4. Retrocedir pdi\n");
         printf("5. Mostrar tota la llista\n");
         printf("6. Sortir\n");
-        printf("\nOpcio: ")
+        printf("\nOpcio: ");
         scanf("%d", &opcio);
 
         switch (opcio){
@@ -23,16 +23,20 @@ int main() {
                 scanf("%d", &num);
                 printf("\n");
                 LLISTABID_insereixOrdenat(&l, num);
+                break;
 
             case 2:
                 num = LLISTABID_consulta(l);
                 printf("%d\n", num);
+                break;
 
             case 3:
                 LLISTABID_avanca(&l);
+                break;
 
             case 4:
                 LLISTABID_retrocedeix(&l);
+                break;
 
             case 5:
                 LLISTABID_vesInici(&l);
@@ -41,6 +45,7 @@ int main() {
                     printf("%d\n", num);
                     LLISTABID_avanca(&l);
                 }
+                break;
         }
 
     } while (opcio != 6);
